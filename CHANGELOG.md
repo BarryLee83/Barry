@@ -5,6 +5,7 @@
 - 修正第一次使用前的手动备份步骤：补全 `SCUM.exe`、`SCUM_Launcher.exe`、`SCUM-Win64-Shipping.exe`、`SCUM-Win64-Test.exe` 等进程；明确 `Saved.<编号>` 在 `%LocalAppData%\SCUM` 下、`~Mods.<编号>` 在 `Content` 下（不在 `Paks` 下）；`~Mods` 不存在时跳过；先建备份根目录，避免复制成 `Saved\Saved`。
 - 备份示例路径改为通用的 `D:\SCUM-Backup`，并注明它只是示例、程序不会读取或管理；玩家可换成任意位置。
 - 上手指南新增“这份备份是干什么的”“要备份哪些东西”“出问题怎么还原”，用玩家能看懂的方式说明备份用途和恢复步骤。
+- 新增完整英文文档 `README.en.md` 和 `docs/Player-Guide-EN.md`；中英文 README、玩家指南顶部增加语言切换；发布包内的 `使用说明.txt` 改为中英双语；`pack.js` 会把英文文档一起打包。
 - 同步修正发布包内 `使用说明.txt` 的生成文案。
 
 ## v1.0.2 — 2026-11-03

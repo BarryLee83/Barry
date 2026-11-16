@@ -1,5 +1,7 @@
 # SCUM 私服切换器
 
+**中文** | [English](README.en.md)
+
 在多个 SCUM 私服之间一键切换 **存档 + MOD + 启动器**。切换前自动把当前进度保存回对应编号的目录，切换失败自动回滚；不用再手动搬 `Saved` 和 `~Mods`。
 
 - 适用平台：Windows 10 / 11（64 位）
@@ -7,7 +9,7 @@
 - 不需要安装，解压即用
 - 只操作本地文件，不联网、不上传任何数据
 
-> **第一次用请先看 [玩家上手指南](docs/玩家上手指南.md)。** 下面也写了完整的准备工作和运行逻辑。
+> **第一次用请先看 [玩家上手指南](docs/玩家上手指南.md)（[English](docs/Player-Guide-EN.md)）。** 下面也写了完整的准备工作和运行逻辑。
 
 ---
 
@@ -575,8 +577,9 @@ SCUM-Switcher/
     pack.js           免安装版打包
     make-icon.ps1     生成图标
   docs/
-    玩家上手指南.md
-    开发者说明.md
+    玩家上手指南.md      中文玩家指南
+    Player-Guide-EN.md   English player guide
+    开发者说明.md        中文开发者说明
 ```
 
 ---
@@ -599,29 +602,3 @@ SCUM-Switcher/
 - 切换前请自行备份重要存档；因误操作、杀毒软件、磁盘故障等造成的损失，作者不承担责任。
 - 与 SCUM 开发商、发行商及任何私服没有隶属关系。
 - 使用本工具即表示你理解并接受以上内容。
-
----
-
-## English quick start
-
-SCUM Server Switcher is a portable Windows app that switches SCUM save folders, mod folders, and launchers between private servers.
-
-Prerequisites:
-
-1. Windows 10/11 x64 and SCUM installed.
-2. One unique ID per server (e.g. `0509`) and the server's launcher `.exe`.
-3. Back up `%LocalAppData%\SCUM\Saved` and `<SCUM>\SCUM\Content\Paks\~Mods` once before first use.
-4. Enough free disk space (copy mode keeps a full copy of the target profile).
-
-First run: confirm paths → add a profile (name, ID, launcher, optional command-line keyword) → select the current profile → switch. Missing save/mod folders are handled with dialogs. Failed switches roll back automatically; a journal enables crash recovery.
-
-Build from source:
-
-```bash
-npm install
-npm test
-npm start
-npm run pack -- --out "D:\AI\SCUM-Switcher"
-```
-
-See [docs/玩家上手指南.md](docs/玩家上手指南.md) for the full Chinese walkthrough.

@@ -198,6 +198,70 @@ function writeUserGuide(dir) {
     '  - 未签名的 exe 可能被杀毒软件拦截，请添加信任或自行从源码运行。',
     '  - 详细说明见程序目录下的 README.md 和 docs\\玩家上手指南.md。',
     '',
+    '============================================================',
+    'SCUM Server Switcher v' + PKG.version + ' - English',
+    '============================================================',
+    '',
+    'BEFORE FIRST USE',
+    '  1. Fully exit the game, the official launcher, and every',
+    '     private-server launcher. In Task Manager confirm no SCUM.exe,',
+    '     SCUM_Launcher.exe, SCUM-Win64-Shipping.exe, or',
+    '     SCUM-Win64-Test.exe is running.',
+    '  2. Make one manual backup. The app never reads or changes this',
+    '     backup; it is your fallback if something goes wrong.',
+    '     Copy:',
+    '       %LocalAppData%\\SCUM\\Saved         -> Backup\\Saved',
+    '       <game>\\SCUM\\Content\\Paks\\~Mods     -> Backup\\~Mods (skip if absent)',
+    '       %LocalAppData%\\SCUM\\Saved.<ID>     -> Backup\\Saved.<ID>',
+    '       <game>\\SCUM\\Content\\~Mods.<ID>     -> Backup\\~Mods.<ID>',
+    '     ~Mods.<ID> is under Content, NOT under Paks.',
+    '     Restore: exit the game, rename current Saved/~Mods to .bad,',
+    '     copy the backup back, then delete .bad after checking.',
+    '  3. Keep at least 10 GB free.',
+    '  4. Put the app in a normal folder (e.g. D:\\AI\\SCUM-Switcher),',
+    '     not a low-integrity folder such as D:\\Coding.',
+    '',
+    'FIRST LAUNCH AND PATHS',
+    '  1. Double-click SCUM-Switcher.exe; no installation needed.',
+    '  2. The app auto-detects the SCUM install and data folders.',
+    '  3. If wrong, open Settings -> Paths:',
+    '     - Install folder: the folder containing SCUM\\Content\\Paks',
+    '     - Data folder: usually %LocalAppData%\\SCUM',
+    '',
+    'ADD A SERVER',
+    '  1. Click Add, enter a name and an ID.',
+    '  2. ID allows letters, digits, _ and -; it cannot be changed later.',
+    '  3. Select the server launcher .exe (not .bat / .cmd).',
+    '  4. Command-line keyword is only needed when servers share one exe.',
+    '  5. Enable "This profile uses no mods" when the server has none.',
+    '',
+    'SWITCHING',
+    '  1. Select the target server, then click Switch to this profile.',
+    '  2. The app closes the game/launchers, saves the current data,',
+    '     loads the target data, verifies it, and starts the launcher.',
+    '  3. Do not open the game or move Saved/~Mods during the switch.',
+    '',
+    'MISSING SAVE OR MOD FOLDER',
+    '  - Missing saves: create empty saves or copy the current saves.',
+    '  - Missing mods: put the server mods into Content\\~Mods.<ID> and',
+    '    click Retry; or choose Continue with no mods.',
+    '',
+    'SAFETY',
+    '  - Precheck before writing, with journal and automatic rollback.',
+    '  - An unfinished switch is offered for rollback on next launch.',
+    '  - The trash keeps the newest N displaced archives for the whole',
+    '    trash root (default 5, minimum 2), not N per server.',
+    '  - Per-server long-term data lives in Saved.<ID> / ~Mods.<ID>.',
+    '',
+    'DATA',
+    '  Config/logs/history/commands/map: %APPDATA%\\SCUM-Switcher',
+    '  Saves: %LocalAppData%\\SCUM\\Saved',
+    '  Save archives: %LocalAppData%\\SCUM\\Saved.<ID>',
+    '  Current mods: <game>\\SCUM\\Content\\Paks\\~Mods',
+    '  Mod archives: <game>\\SCUM\\Content\\~Mods.<ID>',
+    '',
+    'Full English docs: README.en.md and docs\\Player-Guide-EN.md',
+    '',
   ].join('\r\n');
   fs.writeFileSync(path.join(dir, '使用说明.txt'), `\ufeff${text}`, 'utf8');
 }
@@ -236,7 +300,7 @@ function main() {
     log('Copying application sources…');
     copyDir(path.join(ROOT, 'src'), path.join(appDir, 'src'));
 
-    for (const name of ['README.md', 'LICENSE']) {
+    for (const name of ['README.md', 'README.en.md', 'LICENSE']) {
       const file = path.join(ROOT, name);
       if (fs.existsSync(file)) fs.copyFileSync(file, path.join(appDir, name));
     }
@@ -266,8 +330,9 @@ function main() {
       fs.copyFileSync(iconFile, path.join(staging, 'SCUM-Switcher.ico'));
       log('Copied app icon (SCUM-Switcher.ico).');
     }
-    if (fs.existsSync(path.join(ROOT, 'README.md'))) {
-      fs.copyFileSync(path.join(ROOT, 'README.md'), path.join(staging, 'README.md'));
+    for (const name of ['README.md', 'README.en.md']) {
+      const file = path.join(ROOT, name);
+      if (fs.existsSync(file)) fs.copyFileSync(file, path.join(staging, name));
     }
     const docsDir = path.join(ROOT, 'docs');
     if (fs.existsSync(docsDir)) {
