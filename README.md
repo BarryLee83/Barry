@@ -1,6 +1,8 @@
-# SCUM 私服切换器
+# SCUM 私服切换器（SCUM Server Switcher）
 
 **中文** | [English](README.en.md)
+
+> `English` 是同一个项目的完整英文版，不是另一个项目。
 
 在多个 SCUM 私服之间一键切换 **存档 + MOD + 启动器**。切换前自动把当前进度保存回对应编号的目录，切换失败自动回滚；不用再手动搬 `Saved` 和 `~Mods`。
 

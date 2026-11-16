@@ -1,6 +1,8 @@
-# SCUM Server Switcher
+# SCUM Server Switcher (SCUM 私服切换器)
 
 [中文](README.md) | **English**
+
+> This is the English edition of the same project. The [Chinese README](README.md) is the original documentation.
 
 Switch **saves + mods + launcher** between SCUM private servers with one click. Before switching, the app saves your current progress back to the matching server folder; if anything fails, it rolls back automatically. No more manually moving `Saved` and `~Mods`.
 

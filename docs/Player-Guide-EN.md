@@ -1,6 +1,8 @@
-# Player Guide
+# Player Guide (玩家上手指南)
 
 [中文](玩家上手指南.md) | **English**
+
+> This is the English edition of the same project's player guide.
 
 This guide is for **first-time users** who are not familiar with the folder layout. Follow it once; after that, every switch is just one button.
 
