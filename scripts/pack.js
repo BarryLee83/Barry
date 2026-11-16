@@ -121,10 +121,21 @@ function writeUserGuide(dir) {
     'SCUM 私服切换器  v' + PKG.version,
     '',
     '一、第一次使用前（重要）',
-    '  1. 完全退出游戏和启动器。',
-    '  2. 手动备份一次：',
-    '     %LocalAppData%\\SCUM\\Saved',
-    '     <游戏目录>\\SCUM\\Content\\Paks\\~Mods',
+    '  1. 完全退出游戏、官方启动器和各服的私服启动器。',
+    '     任务管理器确认没有 SCUM.exe、SCUM_Launcher.exe、',
+    '     SCUM-Win64-Shipping.exe、SCUM-Win64-Test.exe。',
+    '  2. 手动备份一次（只做一次）：',
+    '     作用：游戏只认一份 Saved 和 ~Mods，切换器会替换它们；',
+    '     这份外部副本程序不会碰，出问题可以整体复制回去。',
+    '     新建 D:\\SCUM-Backup（只是示例，可换任意位置），然后复制：',
+    '     %LocalAppData%\\SCUM\\Saved            -> 备份\\Saved',
+    '     <游戏目录>\\SCUM\\Content\\Paks\\~Mods    -> 备份\\~Mods（没有就跳过）',
+    '     如果已有按编号归档，也分别复制：',
+    '     %LocalAppData%\\SCUM\\Saved.编号        -> 备份\\Saved.编号',
+    '     <游戏目录>\\SCUM\\Content\\~Mods.编号    -> 备份\\~Mods.编号',
+    '     注意 ~Mods.编号 在 Content 下，不在 Paks 下。',
+    '     还原：退出游戏和切换器，把当前 Saved / ~Mods 改名加 .bad，',
+    '     再把备份复制回原位，确认无误后再删除 .bad 目录。',
     '  3. 建议目标磁盘至少留 10 GB 空闲。',
     '  4. 程序放在普通目录（例如 D:\\AI\\SCUM-Switcher），不要放在 D:\\Coding 这类',
     '     低完整性目录，否则可能无法写入 %LocalAppData%\\SCUM。',
@@ -257,6 +268,11 @@ function main() {
     }
     if (fs.existsSync(path.join(ROOT, 'README.md'))) {
       fs.copyFileSync(path.join(ROOT, 'README.md'), path.join(staging, 'README.md'));
+    }
+    const docsDir = path.join(ROOT, 'docs');
+    if (fs.existsSync(docsDir)) {
+      copyDir(docsDir, path.join(staging, 'docs'));
+      log('Copied player and developer guides (docs/).');
     }
     writeUserGuide(staging);
 
