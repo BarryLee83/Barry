@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+build-output/
+*.backup-*/
+*.staging-*/
+
+# Runtime data (never commit user config / saves / logs)
+config.json
+switch-journal.json
+history.json
+admin-custom.json
+map-config.json
+logs/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.swp
+.vscode/
+.idea/

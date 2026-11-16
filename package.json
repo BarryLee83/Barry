@@ -1,0 +1,19 @@
+{
+  "name": "scum-server-switcher",
+  "productName": "SCUM Server Switcher",
+  "version": "1.0.2",
+  "description": "SCUM 私服配置一键切换器 / SCUM private-server profile switcher",
+  "main": "src/main/main.js",
+  "author": "SCUM Server Switcher",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/fsx.test.js tests/config.test.js tests/mods.test.js tests/switcher.test.js",
+    "icon": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/make-icon.ps1",
+    "pack": "node scripts/pack.js"
+  },
+  "devDependencies": {
+    "electron": "45.0.0"
+  }
+}
